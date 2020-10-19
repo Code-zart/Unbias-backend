@@ -20,9 +20,12 @@ defmodule UnbiasBackendWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", UnbiasBackendWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", UnbiasBackendWeb do
+    pipe_through :api
+
+    resources "/businesses", BusinessController, only: [:index, :show]
+    resources "/users", UserController
+  end
 
   # Enables LiveDashboard only for development
   #
